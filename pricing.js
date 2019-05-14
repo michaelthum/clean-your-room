@@ -4,17 +4,18 @@ export function calculateProductPrice(product, employee, selectedOptions) {
 
   switch (product.type) {
     case 'medical':
-    var types = ['ee', 'sp', 'ch', 'chs'];
+      var types = ['ee', 'sp', 'ch', 'chs'];
 
-    types.forEach(function (type) {
+      types.forEach(function (type) {
     
-      if (fmtc.includes(type)) {
-              const typeCost = product.costs.find(cost => {
-                return cost.role === type
-      })
-      price += typeCost.price;
-    };
-
+        if (fmtc.includes(type)) {
+          const typeCost = product.costs.find(cost => {
+            return cost.role === type
+          })
+      
+          price += typeCost.price
+        }
+      })  
       return parseInt(price * 100) / 100
     case 'volLife':
       if (fmtc.includes('ee')) {
